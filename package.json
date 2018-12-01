@@ -1,0 +1,26 @@
+{
+  "name": "soamod-community-challenge",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/entry.js",
+  "scripts": {
+    "build": "npm run build:js && npm run build:pak",
+    "build:js": "webpack --config config/webpack.js  --colors --mode=development",
+    "build:pak": "node node_modules/shadows-of-adam-mod-builder/index.js --output=dist/ty-community-challenge.pak"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lTyl/soamod-community-challenge.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lTyl/soamod-community-challenge/issues"
+  },
+  "homepage": "https://github.com/lTyl/soamod-community-challenge#readme",
+  "dependencies": {
+    "shadows-of-adam-mod-builder": "^1.0.0",
+    "webpack": "^4.21.0",
+    "webpack-cli": "^3.1.2"
+  }
+}
