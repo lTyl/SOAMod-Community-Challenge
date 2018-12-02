@@ -1,14 +1,20 @@
 import { Slime } from "./Enemies/Slime";
+import { DeathFlower } from "./Enemies/DeathFlower";
+import { Tentacle } from "./Enemies/Tentacle";
+import { TentacleImproved } from "./Enemies/TentacleImproved";
+import { Wasp } from "./Enemies/Wasp";
+import { Curator } from "../Models/Curator";
 
-export class TangleCurator {
+export class TangleCurator extends Curator{
 	constructor(){
-		this.slime = new Slime();
-		
-		this.update();
-	}
-	
-	update(){
-		this.slime.update(window.ig.global.stats.enemies.list[this.slime.dbId]);
+		super();
+		this.enemies = {
+			slime: new Slime(),
+			deathflower: new DeathFlower(),
+			tentacle: new Tentacle(),
+			tentacleImproved: new TentacleImproved(),
+			wasp: new Wasp()
+		};
 	}
 }
 
