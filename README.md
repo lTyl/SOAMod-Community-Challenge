@@ -15,3 +15,7 @@ This mod is built with the [Shadows of Adam Mod Builder](https://github.com/lTyl
 To build, run `npm run build`.
 
 **WARNING:** The input file must *always* be named `patch-file.js`. If it is not, the Shadows of Adam MOD API will be unable to read the .pak file and the mod will fail to install.
+
+## Contributing
+
+GRATEFUL FOR ALL PULL REQUESTS. We want this to be a community project to add a new challenge to Shadows of Adam!
