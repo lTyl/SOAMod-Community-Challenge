@@ -4,8 +4,12 @@ export class Artifact {
 		this.dbId = "";
 	}
 	update(artifactData){
-		for (let key in this.artifact){
-			artifactData[key] = this.artifact[key];
+		if (!artifactData){
+			window.ig.global.stats.artifacts.list[this.dbId] = this.artifact;
+		} else {
+			for (let key in this.artifact){
+				artifactData[key] = this.artifact[key];
+			}
 		}
 	}
 }

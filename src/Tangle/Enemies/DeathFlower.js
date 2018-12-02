@@ -5,6 +5,11 @@ export class DeathFlower extends Enemy{
 		super();
 		
 		this.dbId = "deathflower";
-		// TODO: Add new stats for DeathFlower
+		
+		this.model = {
+			hp: 900,
+			bp: 1000,
+			accessoryID: "ty-cc-deathflower"
+		};
 	}
 }

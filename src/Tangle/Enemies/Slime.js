@@ -9,7 +9,6 @@ export class Slime extends Enemy {
 		 * Then, it will call Slime.update(data) with the enemy data.
 		 */
 		this.dbId = "slime";
-		
 		/**
 		 * - Change HP from 40 -> 80
 		 * - Change Attack from 1 -> 8
@@ -20,7 +19,7 @@ export class Slime extends Enemy {
 		 */
 		this.model = {
 			hp: 80,
-			bp: Infinity,
+			bp: 2000,
 			attack: 8,
 			defense: 4,
 			speed: 6,

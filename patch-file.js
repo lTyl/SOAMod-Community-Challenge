@@ -554,6 +554,30 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+/***/ "./src/Models/AIScript.js":
+/*!********************************!*\
+  !*** ./src/Models/AIScript.js ***!
+  \********************************/
+/*! exports provided: AIScript */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"AIScript\", function() { return AIScript; });\nclass AIScript {\r\n\tconstructor(){\r\n\t\t// the ig.AIManager namespace in the Shadows of Adam API contains methods for AI Management\r\n\t\tthis.manager = window.AIManager;\r\n\t\t// The script represents the model of your new AI Script.\r\n\t\t// The script will also be called with the context of AIManager\r\n\t\tthis.script = {};\r\n\t}\r\n\t\r\n\t/**\r\n\t * This method called the AIManager inject() method for the SOA API. This injects your script into the AIManager\r\n\t */\r\n\tinjector(){\r\n\t\twindow.AIManager.inject(this.script);\r\n\t}\r\n}\n\n//# sourceURL=webpack:///./src/Models/AIScript.js?");
+
+/***/ }),
+
+/***/ "./src/Models/Artifact.js":
+/*!********************************!*\
+  !*** ./src/Models/Artifact.js ***!
+  \********************************/
+/*! exports provided: Artifact */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Artifact\", function() { return Artifact; });\nclass Artifact {\r\n\tconstructor(){\r\n\t\tthis.artifact = {};\r\n\t\tthis.dbId = \"\";\r\n\t}\r\n\tupdate(artifactData){\r\n\t\tif (!artifactData){\r\n\t\t\twindow.ig.global.stats.artifacts.list[this.dbId] = this.artifact;\r\n\t\t} else {\r\n\t\t\tfor (let key in this.artifact){\r\n\t\t\t\tartifactData[key] = this.artifact[key];\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}\n\n//# sourceURL=webpack:///./src/Models/Artifact.js?");
+
+/***/ }),
+
 /***/ "./src/Models/Curator.js":
 /*!*******************************!*\
   !*** ./src/Models/Curator.js ***!
@@ -562,7 +586,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Curator\", function() { return Curator; });\nclass Curator {\r\n\tconstructor(){\r\n\t\tthis.enemies = {};\r\n\t\tthis.aiScripts = {};\r\n\t}\r\n\t\r\n\tupdate() {\r\n\t\t// Update all enemies\r\n\t\tfor (let enemyId in this.enemies){\r\n\t\t\tlet enemy = this.enemies[enemyId];\r\n\t\t\tenemy.update(window.ig.global.stats.enemies.list[enemy.dbId]);\r\n\t\t}\r\n\t\t\r\n\t\t// Inject new AI Scripts into Shadows of Adam\r\n\t\tfor (let scriptKey in this.aiScripts){\r\n\t\t\tlet script = this.aiScripts[scriptKey];\r\n\t\t\tscript.injector();\r\n\t\t}\r\n\t}\r\n}\n\n//# sourceURL=webpack:///./src/Models/Curator.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Curator\", function() { return Curator; });\nclass Curator {\r\n\tconstructor(){\r\n\t\tthis.enemies = {};\r\n\t\tthis.aiScripts = {};\r\n\t\tthis.weapons = {};\r\n\t\tthis.armors = {};\r\n\t\tthis.artifacts = {};\r\n\t}\r\n\t\r\n\tupdate() {\r\n\t\t// Update all enemies\r\n\t\tfor (let enemyId in this.enemies){\r\n\t\t\tlet enemy = this.enemies[enemyId];\r\n\t\t\tenemy.update(window.ig.global.stats.enemies.list[enemy.dbId]);\r\n\t\t}\r\n\t\t\r\n\t\t// Inject new AI Scripts into Shadows of Adam\r\n\t\tfor (let scriptKey in this.aiScripts){\r\n\t\t\tlet script = this.aiScripts[scriptKey];\r\n\t\t\tscript.injector();\r\n\t\t}\r\n\t\t\r\n\t\t// Update all weapons\r\n\t\tfor (let weaponId in this.weapons){\r\n\t\t\tlet weapon = this.weapons[weaponId];\r\n\t\t\tweapon.update(window.ig.global.stats.weapons.list[weapon.dbId]);\r\n\t\t}\r\n\t\t\r\n\t\t// Update all armors\r\n\t\tfor (let armorId in this.armors){\r\n\t\t\tlet armor = this.armors[armorId];\r\n\t\t\tarmor.update(window.ig.global.stats.armors.list[armor.dbId]);\r\n\t\t}\r\n\t\t\r\n\t\t// Update all artifacts\r\n\t\tfor (let artifactId in this.artifacts){\r\n\t\t\tlet artifact = this.artifacts[artifactId];\r\n\t\t\tartifact.update(window.ig.global.stats.artifacts.list[artifactId.dbId]);\r\n\t\t}\r\n\t}\r\n}\n\n//# sourceURL=webpack:///./src/Models/Curator.js?");
 
 /***/ }),
 
@@ -574,7 +598,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Enemy\", function() { return Enemy; });\nclass Enemy {\r\n\tconstructor(){\r\n\t\tthis.model = {};\r\n\t\tthis.dbId = \"\";\r\n\t}\r\n\tupdate(enemyData){\r\n\t\tfor (let key in this.model){\r\n\t\t\tenemyData[key] = this.model[key];\r\n\t\t}\r\n\t}\r\n}\n\n//# sourceURL=webpack:///./src/Models/Enemy.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Enemy\", function() { return Enemy; });\nclass Enemy {\r\n\tconstructor(){\r\n\t\tthis.model = {};\r\n\t\tthis.dbId = \"\";\r\n\t}\r\n\tupdate(enemyData){\r\n\t\tif (!enemyData){\r\n\t\t\twindow.ig.global.stats.enemies.list[this.dbId] = this.model;\r\n\t\t} else {\r\n\t\t\tfor (let key in this.model){\r\n\t\t\t\tenemyData[key] = this.model[key];\r\n\t\t\t}\r\n\t\t}\r\n\t\t}\r\n}\n\n//# sourceURL=webpack:///./src/Models/Enemy.js?");
 
 /***/ }),
 
@@ -962,6 +986,30 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+/***/ "./src/Tangle/AI/AIWasp.js":
+/*!*********************************!*\
+  !*** ./src/Tangle/AI/AIWasp.js ***!
+  \*********************************/
+/*! exports provided: AIWasp */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"AIWasp\", function() { return AIWasp; });\n/* harmony import */ var _Models_AIScript__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/AIScript */ \"./src/Models/AIScript.js\");\n\r\n\r\nclass AIWasp extends _Models_AIScript__WEBPACK_IMPORTED_MODULE_0__[\"AIScript\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t\r\n\t\t/**\r\n\t\t * data:\r\n\t\t * - id is the actor ID of the actor running this AI Script\r\n\t\t * - actor is the ig.game.actor reference of the actor running this AI script\r\n\t\t */\r\n\t\tthis.script = {\r\n\t\t\tty_wasp_community_challengeAI: function(data){\r\n\t\t\t\tconsole.log(\"AI SCRIPT MOD CALLED\");\r\n\t\t\t\tvar percentHP = (data.actor.hp / data.actor.hpMax) * 100;\r\n\t\t\t\tconsole.log(\"PERCENTHP\", percentHP);\r\n\t\t\t\t// If remaining HP is less than 35%, then always cast Stab\r\n\t\t\t\tif (percentHP <= 35){\r\n\t\t\t\t\tthis.createSkillAction('33', data.id, this.getSkillData('33'), this.getFirstInjuredHero());\r\n\t\t\t\t\tconsole.log(\"SKILL\");\r\n\t\t\t\t} else {\r\n\t\t\t\t\tthis.createFightAction(data.id, this.getFirstInjuredHero());\r\n\t\t\t\t\tconsole.log(\"FIGHT\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t};\r\n\t}\r\n}\n\n//# sourceURL=webpack:///./src/Tangle/AI/AIWasp.js?");
+
+/***/ }),
+
+/***/ "./src/Tangle/Artifacts/ArtifactDeathFlower.js":
+/*!*****************************************************!*\
+  !*** ./src/Tangle/Artifacts/ArtifactDeathFlower.js ***!
+  \*****************************************************/
+/*! exports provided: ArtifactDeathFlower */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ArtifactDeathFlower\", function() { return ArtifactDeathFlower; });\n/* harmony import */ var _Models_Artifact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Artifact */ \"./src/Models/Artifact.js\");\n\r\n\r\nclass ArtifactDeathFlower extends _Models_Artifact__WEBPACK_IMPORTED_MODULE_0__[\"Artifact\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t// The unique ID of this artifact to store in the database\r\n\t\tthis.dbId = \"ty-cc-deathflower\";\r\n\t\tthis.artifact = {\r\n\t\t\tname: \"ENEMY-DEATHFLOWER\",\r\n\t\t\tdefense: 0,\r\n\t\t\tmagic: 0,\r\n\t\t\taccuracy:0,\r\n\t\t\tattack: 0,\r\n\t\t\tspeed: 0,\r\n\t\t\tluck: 0,\r\n\t\t\towned: 0,\r\n\t\t\tcost: 4000,\r\n\t\t\tskillID: ['bloom0'],\r\n\t\t\ttype: \"callskill\",\r\n\t\t\tclasses: [0, 1, 2, 3],\r\n\t\t\tinfo: \"DO NOT PUT THIS ON OMG\"\r\n\t\t};\r\n\t}\r\n}\n\n//# sourceURL=webpack:///./src/Tangle/Artifacts/ArtifactDeathFlower.js?");
+
+/***/ }),
+
 /***/ "./src/Tangle/Enemies/DeathFlower.js":
 /*!*******************************************!*\
   !*** ./src/Tangle/Enemies/DeathFlower.js ***!
@@ -970,7 +1018,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DeathFlower\", function() { return DeathFlower; });\n/* harmony import */ var _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Enemy */ \"./src/Models/Enemy.js\");\n\r\n\r\nclass DeathFlower extends _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__[\"Enemy\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t\r\n\t\tthis.dbId = \"deathflower\";\r\n\t\t// TODO: Add new stats for DeathFlower\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack:///./src/Tangle/Enemies/DeathFlower.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DeathFlower\", function() { return DeathFlower; });\n/* harmony import */ var _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Enemy */ \"./src/Models/Enemy.js\");\n\r\n\r\nclass DeathFlower extends _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__[\"Enemy\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t\r\n\t\tthis.dbId = \"deathflower\";\r\n\t\t\r\n\t\tthis.model = {\r\n\t\t\thp: 900,\r\n\t\t\tbp: 1000,\r\n\t\t\taccessoryID: \"ty-cc-deathflower\"\r\n\t\t};\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack:///./src/Tangle/Enemies/DeathFlower.js?");
 
 /***/ }),
 
@@ -982,7 +1030,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Slime\", function() { return Slime; });\n/* harmony import */ var _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Enemy */ \"./src/Models/Enemy.js\");\n\r\n\r\nclass Slime extends _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__[\"Enemy\"] {\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t/**\r\n\t\t * The curator will use this value to pull the enemy data from the database.\r\n\t\t *\r\n\t\t * Then, it will call Slime.update(data) with the enemy data.\r\n\t\t */\r\n\t\tthis.dbId = \"slime\";\r\n\t\t\r\n\t\t/**\r\n\t\t * - Change HP from 40 -> 80\r\n\t\t * - Change Attack from 1 -> 8\r\n\t\t * - Change defense from 2 -> 4\r\n\t\t * - Change speed from 4 -> 6\r\n\t\t * - Add 50% Thunder resistance\r\n\t\t * - Add a shield artifact\r\n\t\t */\r\n\t\tthis.model = {\r\n\t\t\thp: 80,\r\n\t\t\tbp: Infinity,\r\n\t\t\tattack: 8,\r\n\t\t\tdefense: 4,\r\n\t\t\tspeed: 6,\r\n\t\t\tmagic: 6,\r\n\t\t\timmunity: [\r\n\t\t\t\t{name: 'thunder', modifier: 0.50},\r\n\t\t\t\t{ name: 'ice', modifier: .5 }\r\n\t\t\t],\r\n\t\t\taccessoryID: \"enemy_lshield_self\"\r\n\t\t};\r\n\t}\r\n}\n\n//# sourceURL=webpack:///./src/Tangle/Enemies/Slime.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Slime\", function() { return Slime; });\n/* harmony import */ var _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Enemy */ \"./src/Models/Enemy.js\");\n\r\n\r\nclass Slime extends _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__[\"Enemy\"] {\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t/**\r\n\t\t * The curator will use this value to pull the enemy data from the database.\r\n\t\t *\r\n\t\t * Then, it will call Slime.update(data) with the enemy data.\r\n\t\t */\r\n\t\tthis.dbId = \"slime\";\r\n\t\t/**\r\n\t\t * - Change HP from 40 -> 80\r\n\t\t * - Change Attack from 1 -> 8\r\n\t\t * - Change defense from 2 -> 4\r\n\t\t * - Change speed from 4 -> 6\r\n\t\t * - Add 50% Thunder resistance\r\n\t\t * - Add a shield artifact\r\n\t\t */\r\n\t\tthis.model = {\r\n\t\t\thp: 80,\r\n\t\t\tbp: 2000,\r\n\t\t\tattack: 8,\r\n\t\t\tdefense: 4,\r\n\t\t\tspeed: 6,\r\n\t\t\tmagic: 6,\r\n\t\t\timmunity: [\r\n\t\t\t\t{name: 'thunder', modifier: 0.50},\r\n\t\t\t\t{ name: 'ice', modifier: .5 }\r\n\t\t\t],\r\n\t\t\taccessoryID: \"enemy_lshield_self\"\r\n\t\t};\r\n\t}\r\n}\n\n//# sourceURL=webpack:///./src/Tangle/Enemies/Slime.js?");
 
 /***/ }),
 
@@ -994,7 +1042,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Tentacle\", function() { return Tentacle; });\n/* harmony import */ var _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Enemy */ \"./src/Models/Enemy.js\");\n\r\n\r\nclass Tentacle extends _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__[\"Enemy\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t\r\n\t\tthis.dbId = \"tentacle\";\r\n\t\t\r\n\t\t// TODO: Add new stats for Tentacle\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack:///./src/Tangle/Enemies/Tentacle.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Tentacle\", function() { return Tentacle; });\n/* harmony import */ var _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Enemy */ \"./src/Models/Enemy.js\");\n\r\n\r\nclass Tentacle extends _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__[\"Enemy\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t\r\n\t\tthis.dbId = \"tentacle\";\r\n\t\t\r\n\t\tthis.model = {\r\n\t\t\thp: 110,\r\n\t\t\tbp: 100,\r\n\t\t\tattack: 18,\r\n\t\t\tmagic: 12\r\n\t\t};\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack:///./src/Tangle/Enemies/Tentacle.js?");
 
 /***/ }),
 
@@ -1006,7 +1054,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TentacleImproved\", function() { return TentacleImproved; });\n/* harmony import */ var _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Enemy */ \"./src/Models/Enemy.js\");\n\r\n\r\nclass TentacleImproved extends _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__[\"Enemy\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t\r\n\t\tthis.dbId = \"tentacleImproved\";\r\n\t\t// TODO: Add new stats for TentacleImproved\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack:///./src/Tangle/Enemies/TentacleImproved.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TentacleImproved\", function() { return TentacleImproved; });\n/* harmony import */ var _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Enemy */ \"./src/Models/Enemy.js\");\n\r\n\r\nclass TentacleImproved extends _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__[\"Enemy\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t\r\n\t\tthis.dbId = \"tentacleImproved\";\r\n\t\tthis.model = {\r\n\t\t\thp: 500,\r\n\t\t\tbp: 1000,\r\n\t\t\tattack: 1,\r\n\t\t\tdefense: 6,\r\n\t\t\tmagic: 10\r\n\t\t};\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack:///./src/Tangle/Enemies/TentacleImproved.js?");
 
 /***/ }),
 
@@ -1018,7 +1066,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Wasp\", function() { return Wasp; });\n/* harmony import */ var _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Enemy */ \"./src/Models/Enemy.js\");\n\r\n\r\nclass Wasp extends _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__[\"Enemy\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t\r\n\t\tthis.dbId = \"wasp\";\r\n\t\t\r\n\t\t// TODO: Add new stats for Wasp\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack:///./src/Tangle/Enemies/Wasp.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Wasp\", function() { return Wasp; });\n/* harmony import */ var _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Models/Enemy */ \"./src/Models/Enemy.js\");\n\r\n\r\nclass Wasp extends _Models_Enemy__WEBPACK_IMPORTED_MODULE_0__[\"Enemy\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\t\r\n\t\tthis.dbId = \"wasp\";\r\n\t\t\r\n\t\tthis.model = {\r\n\t\t\thp: 90,\r\n\t\t\tbp: 2000,\r\n\t\t\tattack: 12,\r\n\t\t\tdefense: 4,\r\n\t\t\tspeed: 9,\r\n\t\t\tmagic: 5,\r\n\t\t\taiScript: \"ty_wasp_community_challengeAI\"\r\n\t\t};\r\n\t\t\r\n\t}\r\n}\r\n\n\n//# sourceURL=webpack:///./src/Tangle/Enemies/Wasp.js?");
 
 /***/ }),
 
@@ -1030,7 +1078,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TangleCurator\", function() { return TangleCurator; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"tangleCurator\", function() { return tangleCurator; });\n/* harmony import */ var _Enemies_Slime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Enemies/Slime */ \"./src/Tangle/Enemies/Slime.js\");\n/* harmony import */ var _Enemies_DeathFlower__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Enemies/DeathFlower */ \"./src/Tangle/Enemies/DeathFlower.js\");\n/* harmony import */ var _Enemies_Tentacle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Enemies/Tentacle */ \"./src/Tangle/Enemies/Tentacle.js\");\n/* harmony import */ var _Enemies_TentacleImproved__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Enemies/TentacleImproved */ \"./src/Tangle/Enemies/TentacleImproved.js\");\n/* harmony import */ var _Enemies_Wasp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Enemies/Wasp */ \"./src/Tangle/Enemies/Wasp.js\");\n/* harmony import */ var _Models_Curator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Models/Curator */ \"./src/Models/Curator.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nclass TangleCurator extends _Models_Curator__WEBPACK_IMPORTED_MODULE_5__[\"Curator\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\tthis.enemies = {\r\n\t\t\tslime: new _Enemies_Slime__WEBPACK_IMPORTED_MODULE_0__[\"Slime\"](),\r\n\t\t\tdeathflower: new _Enemies_DeathFlower__WEBPACK_IMPORTED_MODULE_1__[\"DeathFlower\"](),\r\n\t\t\ttentacle: new _Enemies_Tentacle__WEBPACK_IMPORTED_MODULE_2__[\"Tentacle\"](),\r\n\t\t\ttentacleImproved: new _Enemies_TentacleImproved__WEBPACK_IMPORTED_MODULE_3__[\"TentacleImproved\"](),\r\n\t\t\twasp: new _Enemies_Wasp__WEBPACK_IMPORTED_MODULE_4__[\"Wasp\"]()\r\n\t\t};\r\n\t}\r\n}\r\n\r\nconst tangleCurator = new TangleCurator();\n\n//# sourceURL=webpack:///./src/Tangle/TangleCurator.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TangleCurator\", function() { return TangleCurator; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"tangleCurator\", function() { return tangleCurator; });\n/* harmony import */ var _Enemies_Slime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Enemies/Slime */ \"./src/Tangle/Enemies/Slime.js\");\n/* harmony import */ var _Enemies_DeathFlower__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Enemies/DeathFlower */ \"./src/Tangle/Enemies/DeathFlower.js\");\n/* harmony import */ var _Enemies_Tentacle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Enemies/Tentacle */ \"./src/Tangle/Enemies/Tentacle.js\");\n/* harmony import */ var _Enemies_TentacleImproved__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Enemies/TentacleImproved */ \"./src/Tangle/Enemies/TentacleImproved.js\");\n/* harmony import */ var _Enemies_Wasp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Enemies/Wasp */ \"./src/Tangle/Enemies/Wasp.js\");\n/* harmony import */ var _AI_AIWasp__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AI/AIWasp */ \"./src/Tangle/AI/AIWasp.js\");\n/* harmony import */ var _Artifacts_ArtifactDeathFlower__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Artifacts/ArtifactDeathFlower */ \"./src/Tangle/Artifacts/ArtifactDeathFlower.js\");\n/* harmony import */ var _Models_Curator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Models/Curator */ \"./src/Models/Curator.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nclass TangleCurator extends _Models_Curator__WEBPACK_IMPORTED_MODULE_7__[\"Curator\"]{\r\n\tconstructor(){\r\n\t\tsuper();\r\n\t\tthis.enemies = {\r\n\t\t\tslime: new _Enemies_Slime__WEBPACK_IMPORTED_MODULE_0__[\"Slime\"](),\r\n\t\t\tdeathflower: new _Enemies_DeathFlower__WEBPACK_IMPORTED_MODULE_1__[\"DeathFlower\"](),\r\n\t\t\ttentacle: new _Enemies_Tentacle__WEBPACK_IMPORTED_MODULE_2__[\"Tentacle\"](),\r\n\t\t\ttentacleImproved: new _Enemies_TentacleImproved__WEBPACK_IMPORTED_MODULE_3__[\"TentacleImproved\"](),\r\n\t\t\twasp: new _Enemies_Wasp__WEBPACK_IMPORTED_MODULE_4__[\"Wasp\"]()\r\n\t\t};\r\n\t\t\r\n\t\tthis.aiScripts = {\r\n\t\t\tWasp: new _AI_AIWasp__WEBPACK_IMPORTED_MODULE_5__[\"AIWasp\"]()\r\n\t\t};\r\n\t\t\r\n\t\tthis.artifacts = {\r\n\t\t\tArtifactDeathFlower: new _Artifacts_ArtifactDeathFlower__WEBPACK_IMPORTED_MODULE_6__[\"ArtifactDeathFlower\"]()\r\n\t\t};\r\n\t}\r\n}\r\n\r\nconst tangleCurator = new TangleCurator();\n\n//# sourceURL=webpack:///./src/Tangle/TangleCurator.js?");
 
 /***/ }),
 

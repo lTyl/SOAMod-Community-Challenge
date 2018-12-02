@@ -6,6 +6,15 @@ export class Wasp extends Enemy{
 		
 		this.dbId = "wasp";
 		
-		// TODO: Add new stats for Wasp
+		this.model = {
+			hp: 90,
+			bp: 2000,
+			attack: 12,
+			defense: 4,
+			speed: 9,
+			magic: 5,
+			aiScript: "ty_wasp_community_challengeAI"
+		};
+		
 	}
 }

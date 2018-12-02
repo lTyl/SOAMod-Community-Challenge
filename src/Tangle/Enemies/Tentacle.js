@@ -6,6 +6,11 @@ export class Tentacle extends Enemy{
 		
 		this.dbId = "tentacle";
 		
-		// TODO: Add new stats for Tentacle
+		this.model = {
+			hp: 110,
+			bp: 100,
+			attack: 18,
+			magic: 12
+		};
 	}
 }

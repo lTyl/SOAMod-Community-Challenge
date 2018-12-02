@@ -4,8 +4,12 @@ export class Armor {
 		this.dbId = "";
 	}
 	update(armorData){
-		for (let key in this.armor){
-			armorData[key] = this.armor[key];
+		if (!armorData){
+			window.ig.global.stats.armor.list[this.dbId] = this.armor;
+		} else {
+			for (let key in this.armor){
+				armorData[key] = this.armor[key];
+			}
 		}
 	}
 }

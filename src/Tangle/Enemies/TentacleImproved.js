@@ -5,6 +5,12 @@ export class TentacleImproved extends Enemy{
 		super();
 		
 		this.dbId = "tentacleImproved";
-		// TODO: Add new stats for TentacleImproved
+		this.model = {
+			hp: 500,
+			bp: 1000,
+			attack: 1,
+			defense: 6,
+			magic: 10
+		};
 	}
 }

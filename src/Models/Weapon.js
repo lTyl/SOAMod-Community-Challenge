@@ -4,8 +4,12 @@ export class Weapon {
 		this.dbId = "";
 	}
 	update(weaponData){
-		for (let key in this.weapon){
-			weaponData[key] = this.weapon[key];
+		if (!weaponData){
+			window.ig.global.stats.weapons.list[this.dbId] = this.weapon;
+		} else {
+			for (let key in this.weapon){
+				weaponData[key] = this.weapon[key];
+			}
 		}
 	}
 }
