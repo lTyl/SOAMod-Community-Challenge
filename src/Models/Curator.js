@@ -36,6 +36,7 @@ export class Curator {
 		for (let artifactId in this.artifacts){
 			let artifact = this.artifacts[artifactId];
 			artifact.update(window.ig.global.stats.artifacts.list[artifactId.dbId]);
+			artifact.update(window.ig.global.accessories.list[artifactId.dbId]);
 		}
 	}
 }

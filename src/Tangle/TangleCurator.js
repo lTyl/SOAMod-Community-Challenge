@@ -7,6 +7,7 @@ import { Wasp } from "./Enemies/Wasp";
 import { AIWasp } from "./AI/AIWasp";
 
 import { ArtifactDeathFlower } from "./Artifacts/ArtifactDeathFlower";
+import { ArtifactTwinCastOfDoom } from "./Artifacts/TwinCastOfDoom";
 
 import { Curator } from "../Models/Curator";
 
@@ -26,7 +27,8 @@ export class TangleCurator extends Curator{
 		};
 		
 		this.artifacts = {
-			ArtifactDeathFlower: new ArtifactDeathFlower()
+			ArtifactDeathFlower: new ArtifactDeathFlower(),
+			ArtifactTwinCastOfDoom: new ArtifactTwinCastOfDoom()
 		};
 	}
 }
