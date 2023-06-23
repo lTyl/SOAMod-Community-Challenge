@@ -21,6 +21,6 @@
   "dependencies": {
     "shadows-of-adam-mod-builder": "^1.0.0",
     "webpack": "^4.21.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^5.1.4"
   }
 }
